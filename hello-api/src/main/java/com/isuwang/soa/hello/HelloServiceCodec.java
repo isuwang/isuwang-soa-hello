@@ -4,46 +4,45 @@ import com.isuwang.soa.core.*;
 import com.isuwang.soa.hello.domain.SendMessageRequest;
 import com.isuwang.soa.hello.domain.SendMessageResponse;
 import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.protocol.*;
 
 public class HelloServiceCodec {
-
     public static class SendMessageRequestSerializer implements TBeanSerializer<SendMessageRequest> {
 
         @Override
         public void read(com.isuwang.soa.hello.domain.SendMessageRequest bean, TProtocol iprot) throws TException {
 
-            org.apache.thrift.protocol.TField schemeField;
+            TField schemeField;
             iprot.readStructBegin();
 
             while (true) {
                 schemeField = iprot.readFieldBegin();
-                if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+                if (schemeField.type == TType.STOP) {
                     break;
                 }
 
                 switch (schemeField.id) {
 
                     case 1:
-                        if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                        if (schemeField.type == TType.I32) {
                             bean.setMsgId(iprot.readI32());
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
 
                     case 2:
-                        if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                        if (schemeField.type == TType.I32) {
                             bean.setSmsType(com.isuwang.soa.hello.enums.SmsType.findByValue(iprot.readI32()));
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
 
                     case 3:
-                        if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+                        if (schemeField.type == TType.LIST) {
                             {
-                                org.apache.thrift.protocol.TList _list0 = iprot.readListBegin();
+                                TList _list0 = iprot.readListBegin();
                                 bean.setMobileNos(new java.util.ArrayList<>(_list0.size));
                                 for (int _i2 = 0; _i2 < _list0.size; ++_i2) {
                                     String _elem1 = iprot.readString();
@@ -53,22 +52,22 @@ public class HelloServiceCodec {
                             }
 
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
 
                     case 4:
-                        if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                        if (schemeField.type == TType.STRING) {
                             bean.setMsgTemplate(iprot.readString());
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
 
                     case 5:
-                        if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+                        if (schemeField.type == TType.MAP) {
 
-                            org.apache.thrift.protocol.TMap _map3 = iprot.readMapBegin();
+                            TMap _map3 = iprot.readMapBegin();
                             bean.setParameters(new java.util.HashMap<>(2 * _map3.size));
                             for (int _i6 = 0; _i6 < _map3.size; ++_i6) {
                                 String _key4 = iprot.readString();
@@ -78,13 +77,13 @@ public class HelloServiceCodec {
                             iprot.readMapEnd();
 
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
 
 
                     default:
-                        org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                        TProtocolUtil.skip(iprot, schemeField.type);
 
                 }
                 iprot.readFieldEnd();
@@ -98,19 +97,19 @@ public class HelloServiceCodec {
         public void write(com.isuwang.soa.hello.domain.SendMessageRequest bean, TProtocol oprot) throws TException {
 
             validate(bean);
-            oprot.writeStructBegin(new org.apache.thrift.protocol.TStruct("SendMessageRequest"));
+            oprot.writeStructBegin(new TStruct("SendMessageRequest"));
 
 
-            oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("msgId", org.apache.thrift.protocol.TType.I32, (short) 1));
+            oprot.writeFieldBegin(new TField("msgId", TType.I32, (short) 1));
             oprot.writeI32(bean.getMsgId());
             oprot.writeFieldEnd();
 
-            oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("smsType", org.apache.thrift.protocol.TType.I32, (short) 2));
+            oprot.writeFieldBegin(new TField("smsType", TType.I32, (short) 2));
             oprot.writeI32(bean.getSmsType().getValue());
             oprot.writeFieldEnd();
 
-            oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("mobileNos", org.apache.thrift.protocol.TType.LIST, (short) 3));
-            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, bean.getMobileNos().size()));
+            oprot.writeFieldBegin(new TField("mobileNos", TType.LIST, (short) 3));
+            oprot.writeListBegin(new TList(TType.STRING, bean.getMobileNos().size()));
             for (String item : bean.getMobileNos()) {
                 oprot.writeString(item);
             }
@@ -118,12 +117,12 @@ public class HelloServiceCodec {
 
             oprot.writeFieldEnd();
 
-            oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("msgTemplate", org.apache.thrift.protocol.TType.STRING, (short) 4));
+            oprot.writeFieldBegin(new TField("msgTemplate", TType.STRING, (short) 4));
             oprot.writeString(bean.getMsgTemplate());
             oprot.writeFieldEnd();
 
-            oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("parameters", org.apache.thrift.protocol.TType.MAP, (short) 5));
-            oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRING, bean.getParameters().size()));
+            oprot.writeFieldBegin(new TField("parameters", TType.MAP, (short) 5));
+            oprot.writeMapBegin(new TMap(TType.STRING, TType.STRING, bean.getParameters().size()));
             for (java.util.Map.Entry<String, String> item : bean.getParameters().entrySet()) {
                 oprot.writeString(item.getKey());
                 oprot.writeString(item.getValue());
@@ -162,36 +161,36 @@ public class HelloServiceCodec {
         @Override
         public void read(com.isuwang.soa.hello.domain.SendMessageResponse bean, TProtocol iprot) throws TException {
 
-            org.apache.thrift.protocol.TField schemeField;
+            TField schemeField;
             iprot.readStructBegin();
 
             while (true) {
                 schemeField = iprot.readFieldBegin();
-                if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+                if (schemeField.type == TType.STOP) {
                     break;
                 }
 
                 switch (schemeField.id) {
 
                     case 1:
-                        if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                        if (schemeField.type == TType.I32) {
                             bean.setStatus(iprot.readI32());
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
 
                     case 2:
-                        if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                        if (schemeField.type == TType.STRING) {
                             bean.setMsg(iprot.readString());
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
 
 
                     default:
-                        org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                        TProtocolUtil.skip(iprot, schemeField.type);
 
                 }
                 iprot.readFieldEnd();
@@ -205,14 +204,14 @@ public class HelloServiceCodec {
         public void write(com.isuwang.soa.hello.domain.SendMessageResponse bean, TProtocol oprot) throws TException {
 
             validate(bean);
-            oprot.writeStructBegin(new org.apache.thrift.protocol.TStruct("SendMessageResponse"));
+            oprot.writeStructBegin(new TStruct("SendMessageResponse"));
 
 
-            oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("status", org.apache.thrift.protocol.TType.I32, (short) 1));
+            oprot.writeFieldBegin(new TField("status", TType.I32, (short) 1));
             oprot.writeI32(bean.getStatus());
             oprot.writeFieldEnd();
 
-            oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("msg", org.apache.thrift.protocol.TType.STRING, (short) 2));
+            oprot.writeFieldBegin(new TField("msg", TType.STRING, (short) 2));
             oprot.writeString(bean.getMsg());
             oprot.writeFieldEnd();
 
@@ -255,6 +254,21 @@ public class HelloServiceCodec {
             this.msg = msg;
         }
 
+
+        @Override
+        public String toString() {
+            StringBuilder stringBuilder = new StringBuilder("{");
+
+            stringBuilder.append("\"").append("name").append("\":\"").append(this.name).append("\",");
+
+            stringBuilder.append("\"").append("msg").append("\":\"").append(this.msg).append("\",");
+
+            stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
+            stringBuilder.append("}");
+
+            return stringBuilder.toString();
+        }
+
     }
 
 
@@ -284,6 +298,18 @@ public class HelloServiceCodec {
         }
 
 
+        @Override
+        public String toString() {
+            StringBuilder stringBuilder = new StringBuilder("{");
+
+            stringBuilder.append("\"").append("success").append("\":\"").append(this.success).append("\",");
+
+            stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
+            stringBuilder.append("}");
+
+            return stringBuilder.toString();
+        }
+
     }
 
     public static class SayHello_argsSerializer implements TBeanSerializer<sayHello_args> {
@@ -291,36 +317,36 @@ public class HelloServiceCodec {
         @Override
         public void read(sayHello_args bean, TProtocol iprot) throws TException {
 
-            org.apache.thrift.protocol.TField schemeField;
+            TField schemeField;
             iprot.readStructBegin();
 
             while (true) {
                 schemeField = iprot.readFieldBegin();
-                if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+                if (schemeField.type == TType.STOP) {
                     break;
                 }
 
                 switch (schemeField.id) {
 
                     case 1:
-                        if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                        if (schemeField.type == TType.STRING) {
                             bean.setName(iprot.readString());
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
 
                     case 2:
-                        if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                        if (schemeField.type == TType.STRING) {
                             bean.setMsg(iprot.readString());
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
 
 
                     default:
-                        org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                        TProtocolUtil.skip(iprot, schemeField.type);
 
                 }
                 iprot.readFieldEnd();
@@ -335,14 +361,14 @@ public class HelloServiceCodec {
         public void write(sayHello_args bean, TProtocol oprot) throws TException {
 
             validate(bean);
-            oprot.writeStructBegin(new org.apache.thrift.protocol.TStruct("sayHello_args"));
+            oprot.writeStructBegin(new TStruct("sayHello_args"));
 
 
-            oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("name", org.apache.thrift.protocol.TType.STRING, (short) 1));
+            oprot.writeFieldBegin(new TField("name", TType.STRING, (short) 1));
             oprot.writeString(bean.getName());
             oprot.writeFieldEnd();
 
-            oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("msg", org.apache.thrift.protocol.TType.STRING, (short) 2));
+            oprot.writeFieldBegin(new TField("msg", TType.STRING, (short) 2));
             oprot.writeString(bean.getMsg());
             oprot.writeFieldEnd();
 
@@ -367,22 +393,21 @@ public class HelloServiceCodec {
         @Override
         public void read(sayHello_result bean, TProtocol iprot) throws TException {
 
-            org.apache.thrift.protocol.TField schemeField;
+            TField schemeField;
             iprot.readStructBegin();
 
-            A:
             while (true) {
                 schemeField = iprot.readFieldBegin();
-                if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+                if (schemeField.type == TType.STOP) {
                     break;
                 }
 
                 switch (schemeField.id) {
                     case 0:  //SUCCESS
-                        if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                        if (schemeField.type == TType.STRING) {
                             bean.setSuccess(iprot.readString());
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
                     /*
@@ -392,7 +417,7 @@ public class HelloServiceCodec {
                         break A;
                     */
                     default:
-                        org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                        TProtocolUtil.skip(iprot, schemeField.type);
                 }
                 iprot.readFieldEnd();
             }
@@ -405,13 +430,12 @@ public class HelloServiceCodec {
         public void write(sayHello_result bean, TProtocol oprot) throws TException {
 
             validate(bean);
-            oprot.writeStructBegin(new org.apache.thrift.protocol.TStruct("sayHello_result"));
+            oprot.writeStructBegin(new TStruct("sayHello_result"));
 
-            if (bean.getSuccess() != null) {
-                oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRING, (short) 0));
-                oprot.writeString(bean.getSuccess());
-                oprot.writeFieldEnd();
-            }
+
+            oprot.writeFieldBegin(new TField("success", TType.STRING, (short) 0));
+            oprot.writeString(bean.getSuccess());
+            oprot.writeFieldEnd();
 
             oprot.writeFieldStop();
             oprot.writeStructEnd();
@@ -419,6 +443,9 @@ public class HelloServiceCodec {
 
 
         public void validate(sayHello_result bean) throws TException {
+
+            if (bean.getSuccess() == null)
+                throw new SoaException(SoaBaseCode.NotNull, "success字段不允许为空");
 
         }
 
@@ -461,6 +488,19 @@ public class HelloServiceCodec {
             this.request = request;
         }
 
+
+        @Override
+        public String toString() {
+            StringBuilder stringBuilder = new StringBuilder("{");
+
+            stringBuilder.append("\"").append("request").append("\":").append(this.request.toString()).append(",");
+
+            stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
+            stringBuilder.append("}");
+
+            return stringBuilder.toString();
+        }
+
     }
 
 
@@ -488,6 +528,20 @@ public class HelloServiceCodec {
         public void setSuccess(com.isuwang.soa.hello.domain.SendMessageResponse success) {
             this.success = success;
         }
+
+
+        @Override
+        public String toString() {
+            StringBuilder stringBuilder = new StringBuilder("{");
+
+            stringBuilder.append("\"").append("success").append("\":").append(this.success.toString()).append(",");
+
+            stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
+            stringBuilder.append("}");
+
+            return stringBuilder.toString();
+        }
+
     }
 
     public static class SendMessage_argsSerializer implements TBeanSerializer<sendMessage_args> {
@@ -495,31 +549,31 @@ public class HelloServiceCodec {
         @Override
         public void read(sendMessage_args bean, TProtocol iprot) throws TException {
 
-            org.apache.thrift.protocol.TField schemeField;
+            TField schemeField;
             iprot.readStructBegin();
 
             while (true) {
                 schemeField = iprot.readFieldBegin();
-                if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+                if (schemeField.type == TType.STOP) {
                     break;
                 }
 
                 switch (schemeField.id) {
 
                     case 1:
-                        if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+                        if (schemeField.type == TType.STRUCT) {
 
                             bean.setRequest(new com.isuwang.soa.hello.domain.SendMessageRequest());
                             new SendMessageRequestSerializer().read(bean.getRequest(), iprot);
 
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
 
 
                     default:
-                        org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                        TProtocolUtil.skip(iprot, schemeField.type);
 
                 }
                 iprot.readFieldEnd();
@@ -534,10 +588,10 @@ public class HelloServiceCodec {
         public void write(sendMessage_args bean, TProtocol oprot) throws TException {
 
             validate(bean);
-            oprot.writeStructBegin(new org.apache.thrift.protocol.TStruct("sendMessage_args"));
+            oprot.writeStructBegin(new TStruct("sendMessage_args"));
 
 
-            oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("request", org.apache.thrift.protocol.TType.STRUCT, (short) 1));
+            oprot.writeFieldBegin(new TField("request", TType.STRUCT, (short) 1));
             new SendMessageRequestSerializer().write(bean.getRequest(), oprot);
             oprot.writeFieldEnd();
 
@@ -562,25 +616,24 @@ public class HelloServiceCodec {
         @Override
         public void read(sendMessage_result bean, TProtocol iprot) throws TException {
 
-            org.apache.thrift.protocol.TField schemeField;
+            TField schemeField;
             iprot.readStructBegin();
 
-            A:
             while (true) {
                 schemeField = iprot.readFieldBegin();
-                if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+                if (schemeField.type == TType.STOP) {
                     break;
                 }
 
                 switch (schemeField.id) {
                     case 0:  //SUCCESS
-                        if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+                        if (schemeField.type == TType.STRUCT) {
 
                             bean.setSuccess(new com.isuwang.soa.hello.domain.SendMessageResponse());
                             new SendMessageResponseSerializer().read(bean.getSuccess(), iprot);
 
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
                     /*
@@ -590,7 +643,7 @@ public class HelloServiceCodec {
                         break A;
                     */
                     default:
-                        org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                        TProtocolUtil.skip(iprot, schemeField.type);
                 }
                 iprot.readFieldEnd();
             }
@@ -603,13 +656,12 @@ public class HelloServiceCodec {
         public void write(sendMessage_result bean, TProtocol oprot) throws TException {
 
             validate(bean);
-            oprot.writeStructBegin(new org.apache.thrift.protocol.TStruct("sendMessage_result"));
+            oprot.writeStructBegin(new TStruct("sendMessage_result"));
 
-            if (bean.getSuccess() != null) {
-                oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRUCT, (short) 0));
-                new SendMessageResponseSerializer().write(bean.getSuccess(), oprot);
-                oprot.writeFieldEnd();
-            }
+
+            oprot.writeFieldBegin(new TField("success", TType.STRUCT, (short) 0));
+            new SendMessageResponseSerializer().write(bean.getSuccess(), oprot);
+            oprot.writeFieldEnd();
 
             oprot.writeFieldStop();
             oprot.writeStructEnd();
@@ -617,6 +669,9 @@ public class HelloServiceCodec {
 
 
         public void validate(sendMessage_result bean) throws TException {
+
+            if (bean.getSuccess() == null)
+                throw new SoaException(SoaBaseCode.NotNull, "success字段不允许为空");
 
             if (bean.getSuccess() != null)
                 new SendMessageResponseSerializer().validate(bean.getSuccess());
@@ -655,31 +710,31 @@ public class HelloServiceCodec {
 
         @Override
         public void read(SoaException bean, TProtocol iprot) throws TException {
-            org.apache.thrift.protocol.TField schemeField;
+            TField schemeField;
             iprot.readStructBegin();
 
             while (true) {
                 schemeField = iprot.readFieldBegin();
-                if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+                if (schemeField.type == TType.STOP) {
                     break;
                 }
                 switch (schemeField.id) {
                     case 1: // code
-                        if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                        if (schemeField.type == TType.STRING) {
                             bean.setCode(iprot.readString());
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
                     case 2: // msg
-                        if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                        if (schemeField.type == TType.STRING) {
                             bean.setMsg(iprot.readString());
                         } else {
-                            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                            TProtocolUtil.skip(iprot, schemeField.type);
                         }
                         break;
                     default:
-                        org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                        TProtocolUtil.skip(iprot, schemeField.type);
                 }
                 iprot.readFieldEnd();
             }
@@ -694,12 +749,12 @@ public class HelloServiceCodec {
         public void write(SoaException bean, TProtocol oprot) throws TException {
             validate(bean);
 
-            oprot.writeStructBegin(new org.apache.thrift.protocol.TStruct("SoaException"));
-            oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("code", org.apache.thrift.protocol.TType.STRING, (short) 1));
+            oprot.writeStructBegin(new TStruct("SoaException"));
+            oprot.writeFieldBegin(new TField("code", TType.STRING, (short) 1));
             oprot.writeString(bean.getCode());
             oprot.writeFieldEnd();
 
-            oprot.writeFieldBegin(new org.apache.thrift.protocol.TField("msg", org.apache.thrift.protocol.TType.STRING, (short) 2));
+            oprot.writeFieldBegin(new TField("msg", TType.STRING, (short) 2));
             oprot.writeString(bean.getMsg());
             oprot.writeFieldEnd();
 

@@ -1,8 +1,8 @@
 package com.isuwang.soa.hello.domain;
 
 /**
- * Created by tangliu on 2016/1/11.
- */
+ * 发送信息返回包
+ **/
 public class SendMessageResponse {
 
     /**
@@ -10,24 +10,37 @@ public class SendMessageResponse {
      **/
     public Integer status;
 
-    /**
-     * 信息
-     **/
-    public String msg;
-
     public Integer getStatus() {
-        return status;
+        return this.status;
     }
 
     public void setStatus(Integer status) {
         this.status = status;
     }
 
+    /**
+     * 信息
+     **/
+    public String msg;
+
     public String getMsg() {
-        return msg;
+        return this.msg;
     }
 
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder("{");
+        stringBuilder.append("\"").append("status").append("\":").append(this.status).append(",");
+        stringBuilder.append("\"").append("msg").append("\":\"").append(this.msg).append("\",");
+
+        stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
+        stringBuilder.append("}");
+
+        return stringBuilder.toString();
+    }
 }
+      
