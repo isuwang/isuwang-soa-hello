@@ -51,8 +51,6 @@
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}</finalName>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -65,7 +63,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/${project.build.finalName}/</outputDirectory>
+                            <outputDirectory>${project.build.directory}/${artifactId}/</outputDirectory>
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>false</overWriteSnapshots>
                             <overWriteIfNewer>true</overWriteIfNewer>
@@ -80,7 +78,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <outputDirectory>${project.build.directory}/${project.build.finalName}/</outputDirectory>
+                    <outputDirectory>${project.build.directory}/${artifactId}/</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

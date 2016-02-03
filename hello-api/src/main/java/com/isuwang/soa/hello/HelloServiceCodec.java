@@ -154,6 +154,11 @@ public class HelloServiceCodec {
 
         }
 
+        @Override
+        public String toString(SendMessageRequest bean) {
+            return bean.toString();
+        }
+
     }
 
     public static class SendMessageResponseSerializer implements TBeanSerializer<SendMessageResponse> {
@@ -227,6 +232,11 @@ public class HelloServiceCodec {
             if (bean.getMsg() == null)
                 throw new SoaException(SoaBaseCode.NotNull, "msg字段不允许为空");
 
+        }
+
+        @Override
+        public String toString(SendMessageResponse bean) {
+            return bean.toString();
         }
 
     }
@@ -387,6 +397,11 @@ public class HelloServiceCodec {
 
         }
 
+        @Override
+        public String toString(sayHello_args bean) {
+            return bean.toString();
+        }
+
     }
 
     public static class SayHello_resultSerializer implements TBeanSerializer<sayHello_result> {
@@ -447,6 +462,11 @@ public class HelloServiceCodec {
             if (bean.getSuccess() == null)
                 throw new SoaException(SoaBaseCode.NotNull, "success字段不允许为空");
 
+        }
+
+        @Override
+        public String toString(sayHello_result bean) {
+            return bean.toString();
         }
 
     }
@@ -610,6 +630,11 @@ public class HelloServiceCodec {
 
         }
 
+        @Override
+        public String toString(sendMessage_args bean) {
+            return bean.toString();
+        }
+
     }
 
     public static class SendMessage_resultSerializer implements TBeanSerializer<sendMessage_result> {
@@ -676,6 +701,11 @@ public class HelloServiceCodec {
             if (bean.getSuccess() != null)
                 new SendMessageResponseSerializer().validate(bean.getSuccess());
 
+        }
+
+        @Override
+        public String toString(sendMessage_result bean) {
+            return bean.toString();
         }
 
     }
@@ -769,6 +799,11 @@ public class HelloServiceCodec {
 
             if (bean.getMsg() == null)
                 throw new SoaException(SoaBaseCode.NotNull, "msg字段不允许为空");
+        }
+
+        @Override
+        public String toString(SoaException bean) {
+            return bean.toString();
         }
     }
 
