@@ -7,7 +7,7 @@ import org.apache.thrift.TException;
 public class HelloServiceClient extends BaseServiceClient {
 
     public HelloServiceClient() {
-        super("HelloService", "1.0.0");
+        super("com.isuwang.soa.hello.service.HelloService", "1.0.0");
     }
 
 

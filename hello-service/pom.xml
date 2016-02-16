@@ -67,6 +67,7 @@
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>false</overWriteSnapshots>
                             <overWriteIfNewer>true</overWriteIfNewer>
+                            <includeArtifactIds>*</includeArtifactIds>
                             <excludeArtifactIds>isuwang-soa-core</excludeArtifactIds>
                         </configuration>
                     </execution>
