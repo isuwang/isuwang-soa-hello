@@ -15,6 +15,6 @@ service HelloService {
     /**
     * send message
     **/
-    hello_domain.SendMessageResponse sendMessage(1: hello_domain.SendMessageRequest request)
+    hello_domain.SendMessageResponse sendMessage(1: hello_domain.SendMessageRequest request);
 
 }

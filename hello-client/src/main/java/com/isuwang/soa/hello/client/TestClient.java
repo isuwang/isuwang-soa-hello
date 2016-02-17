@@ -4,10 +4,6 @@ import com.isuwang.soa.hello.HelloServiceClient;
 import com.isuwang.soa.registry.ServiceInfoWatcher;
 import org.apache.thrift.TException;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 /**
  * Created by tangliu on 2016/2/16.
  */
@@ -15,7 +11,6 @@ public class TestClient {
 
     public static void main(String[] args) throws InterruptedException, TException {
 
-//        System.out.println(new HelloServiceClient().getServiceMetadata());
         ServiceInfoWatcher siw = new ServiceInfoWatcher();
         siw.init();
 
@@ -23,6 +18,8 @@ public class TestClient {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
         }
+
+//        System.out.println(new HelloServiceClient().getServiceMetadata());
 
         int size = 1;
 
