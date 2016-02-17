@@ -15,6 +15,7 @@ public class TestClient {
 
     public static void main(String[] args) throws InterruptedException, TException {
 
+//        System.out.println(new HelloServiceClient().getServiceMetadata());
         ServiceInfoWatcher siw = new ServiceInfoWatcher();
         siw.init();
 
@@ -23,7 +24,7 @@ public class TestClient {
         } catch (InterruptedException e) {
         }
 
-        int size = 100;
+        int size = 1;
 
 
         final long startTime = System.currentTimeMillis();
@@ -39,16 +40,16 @@ public class TestClient {
         System.out.println("请求总数:" + size);
         System.out.println("总耗时时间:" + totalTime + "ms");
 
-//        Thread.sleep(30 * 1000L);
-//
-//        try {
-//            System.out.println((new HelloServiceClient().sayHello("Xiaoming", "nice to meet you")));
-//        } catch (TException e) {
-//            e.printStackTrace();
-//        }
-//
-//        Thread.sleep(3000 * 1000L);
-//        System.exit(0);
+        Thread.sleep(30 * 1000L);
+
+        try {
+            System.out.println((new HelloServiceClient().sayHello("Xiaoming", "nice to meet you")));
+        } catch (TException e) {
+            e.printStackTrace();
+        }
+
+        Thread.sleep(3000 * 1000L);
+        System.exit(0);
 
     }
 }
