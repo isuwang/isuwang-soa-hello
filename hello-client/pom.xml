@@ -9,34 +9,26 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hello-client</artifactId>
+    <artifactId>isuwang-soa-hello-client</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>com.isuwang</groupId>
             <artifactId>isuwang-soa-hello-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        
+
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback-version}</version>
+            <groupId>com.isuwang</groupId>
+            <artifactId>isuwang-soa-registry-zookeeper</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>${logback-version}</version>
+            <groupId>com.isuwang</groupId>
+            <artifactId>isuwang-soa-remoting-netty</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j-version}</version>
-        </dependency>
-
     </dependencies>
 
 

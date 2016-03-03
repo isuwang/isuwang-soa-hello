@@ -1,52 +1,21 @@
 package com.isuwang.soa.hello.client;
 
 import com.isuwang.soa.hello.HelloServiceClient;
-import com.isuwang.soa.registry.ServiceInfoWatcher;
 import org.apache.thrift.TException;
 
 /**
- * Created by tangliu on 2016/2/16.
+ * Created by tangliu on 2016/3/3.
  */
 public class TestClient {
 
-    public static void main(String[] args) throws InterruptedException, TException {
 
-        ServiceInfoWatcher siw = new ServiceInfoWatcher();
-        siw.init();
+    public static void main(String[] args) {
 
+        HelloServiceClient client = new HelloServiceClient();
         try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-        }
-
-//        System.out.println(new HelloServiceClient().getServiceMetadata());
-
-        int size = 1;
-
-
-        final long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < size; i++) {
-
-            System.out.println((new HelloServiceClient().sayHello("Xiaoming", "nice to meet you")));
-
-        }
-
-        long totalTime = System.currentTimeMillis() - startTime;
-
-        System.out.println("请求总数:" + size);
-        System.out.println("总耗时时间:" + totalTime + "ms");
-
-        Thread.sleep(30 * 1000L);
-
-        try {
-            System.out.println((new HelloServiceClient().sayHello("Xiaoming", "nice to meet you")));
+            System.out.println(client.sayHello("LiLei"));
         } catch (TException e) {
             e.printStackTrace();
         }
-
-        Thread.sleep(3000 * 1000L);
-        System.exit(0);
-
     }
 }
