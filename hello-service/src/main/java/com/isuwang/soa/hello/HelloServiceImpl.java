@@ -20,7 +20,7 @@ public class HelloServiceImpl implements HelloService {
             throw new SoaException("hello-001", "so bad");
         } else {
             String message;
-            if (hello.getMessage().isPresent())
+            if (!hello.getMessage().isPresent())
                 message = "you message is emtpy";
             else
                 message = "you message is '" + hello.getMessage().get() + "'";
