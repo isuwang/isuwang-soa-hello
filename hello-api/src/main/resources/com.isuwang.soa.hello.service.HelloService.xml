@@ -35,7 +35,45 @@
                 </fields>
             </response>
         </method>
+        <method name="sayHello2">
+            <request name="sayHello2_args">
+                <fields>
+                    <field tag="1" name="hello" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>com.isuwang.soa.hello.domain.Hello</ref>
+                        </dataType>
+                        <doc></doc>
+                    </field>
+                </fields>
+            </request>
+            <response name="sayHello2_result">
+                <fields>
+                    <field tag="0" name="success" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRING</kind>
+                        </dataType>
+                        <doc></doc>
+                    </field>
+                </fields>
+            </response>
+        </method>
     </methods>
-    <structs/>
+    <structs>
+        <struct namespace="com.isuwang.soa.hello.domain" name="Hello">
+            <fields>
+                <field tag="1" name="name" optional="false" privacy="true">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                </field>
+                <field tag="2" name="message" optional="true" privacy="true">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                </field>
+            </fields>
+        </struct>
+    </structs>
     <enums/>
 </service>

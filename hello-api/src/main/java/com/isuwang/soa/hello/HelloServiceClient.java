@@ -1,9 +1,8 @@
 package com.isuwang.soa.hello;
 
-import com.isuwang.soa.core.*;
-import org.apache.thrift.*;
-import com.isuwang.soa.remoting.BaseServiceClient;
 import com.isuwang.soa.hello.HelloServiceCodec.*;
+import com.isuwang.soa.remoting.BaseServiceClient;
+import org.apache.thrift.TException;
 
 public class HelloServiceClient extends BaseServiceClient {
 
@@ -25,16 +24,29 @@ public class HelloServiceClient extends BaseServiceClient {
 
             sayHello_result response = sendBase(sayHello_args, new sayHello_result(), new SayHello_argsSerializer(), new SayHello_resultSerializer());
 
-               
-                    
-                          /*
-                          if(response.getSuccess() == null){
-                            if(response.getSoaException() == null)
-                            throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "sayHello failed: unknown result");
-                            else
-                            throw response.getSoaException();
-                          }
-                          */
+
+            return response.getSuccess();
+
+
+        } finally {
+            destoryContext();
+        }
+    }
+
+    /**
+     *
+     **/
+    public String sayHello2(com.isuwang.soa.hello.domain.Hello hello) throws TException {
+        initContext("sayHello2");
+
+        try {
+            sayHello2_args sayHello2_args = new sayHello2_args();
+            sayHello2_args.setHello(hello);
+
+
+            sayHello2_result response = sendBase(sayHello2_args, new sayHello2_result(), new SayHello2_argsSerializer(), new SayHello2_resultSerializer());
+
+
             return response.getSuccess();
 
 

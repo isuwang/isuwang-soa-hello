@@ -16,5 +16,10 @@ public interface HelloService {
      **/
     String sayHello(String name) throws com.isuwang.soa.core.SoaException;
 
+    /**
+     *
+     **/
+    String sayHello2(com.isuwang.soa.hello.domain.Hello hello) throws com.isuwang.soa.core.SoaException;
+
 }
         
