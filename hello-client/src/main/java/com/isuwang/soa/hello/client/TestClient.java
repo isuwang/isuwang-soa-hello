@@ -1,6 +1,7 @@
 package com.isuwang.soa.hello.client;
 
 import com.isuwang.soa.hello.HelloServiceClient;
+import com.isuwang.soa.hello.domain.Hello;
 import org.apache.thrift.TException;
 
 import java.util.concurrent.CountDownLatch;
@@ -10,37 +11,38 @@ import java.util.concurrent.CountDownLatch;
  */
 public class TestClient {
 
-
     public static void main(String[] args) throws InterruptedException {
-        int count = 50;
-
         while (true) {
+            final int count = 100;
+
             final CountDownLatch latch = new CountDownLatch(count);
 
             newTask(count, latch);
 
             latch.await();
-
-            Thread.sleep(2000);
         }
     }
 
     private static void newTask(int count, CountDownLatch latch) {
-        new Thread() {
-            @Override
-            public void run() {
-                for (int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
+            new Thread() {
+                @Override
+                public void run() {
                     HelloServiceClient client = new HelloServiceClient();
                     try {
-                        System.out.println(client.sayHello("LiLei"));
+                        Hello hello = new Hello();
+                        hello.setName("ddd");
+                        System.out.println(client.sayHello2(hello));
+
+                        //System.out.println(client.sayHello("hello"));
 
                         latch.countDown();
                     } catch (TException e) {
                         e.printStackTrace();
                     }
                 }
-            }
-        }.start();
+            }.start();
+        }
     }
 
 

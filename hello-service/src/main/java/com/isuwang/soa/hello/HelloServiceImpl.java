@@ -11,6 +11,12 @@ public class HelloServiceImpl implements HelloService {
 
     @Override
     public String sayHello(String name) throws SoaException {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         return "hello, " + name;
     }
 
