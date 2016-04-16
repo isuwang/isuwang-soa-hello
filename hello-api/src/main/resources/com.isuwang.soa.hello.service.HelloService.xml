@@ -2,8 +2,8 @@
 <service namespace="com.isuwang.soa.hello.service" name="HelloService">
     <doc>
 
-        Hello Service
-    </doc>
+ Hello Service
+</doc>
     <meta>
         <version>1.0.0</version>
         <timeout>30000</timeout>
@@ -12,8 +12,8 @@
         <method name="sayHello">
             <doc>
 
-                say hello
-            </doc>
+ say hello
+</doc>
             <request name="sayHello_args">
                 <fields>
                     <field tag="1" name="name" optional="false" privacy="false">
@@ -30,10 +30,14 @@
                         <dataType>
                             <kind>STRING</kind>
                         </dataType>
-                        <doc></doc>
+                        <doc>
+
+ say hello
+</doc>
                     </field>
                 </fields>
             </response>
+            <isSoaTransactionProcess>false</isSoaTransactionProcess>
         </method>
         <method name="sayHello2">
             <request name="sayHello2_args">
@@ -57,6 +61,7 @@
                     </field>
                 </fields>
             </response>
+            <isSoaTransactionProcess>false</isSoaTransactionProcess>
         </method>
     </methods>
     <structs>

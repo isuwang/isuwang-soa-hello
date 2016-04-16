@@ -1,8 +1,8 @@
 package com.isuwang.soa.hello.client;
 
+import com.isuwang.soa.core.SoaException;
 import com.isuwang.soa.hello.HelloServiceClient;
 import com.isuwang.soa.hello.domain.Hello;
-import org.apache.thrift.TException;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -37,7 +37,7 @@ public class TestClient {
                         //System.out.println(client.sayHello("hello"));
 
                         latch.countDown();
-                    } catch (TException e) {
+                    } catch (SoaException e) {
                         e.printStackTrace();
                     }
                 }

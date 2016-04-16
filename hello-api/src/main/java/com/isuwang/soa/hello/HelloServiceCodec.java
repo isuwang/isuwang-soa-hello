@@ -104,7 +104,7 @@ public class HelloServiceCodec {
         public String toString() {
             StringBuilder stringBuilder = new StringBuilder("{");
 
-            stringBuilder.append("\"").append("name").append("\":\"").append(this.name).append("\",");
+            stringBuilder.append("\"").append("name").append("\":\"").append(name).append("\",");
 
             if (stringBuilder.lastIndexOf(",") > 0)
                 stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
@@ -134,7 +134,7 @@ public class HelloServiceCodec {
         public String toString() {
             StringBuilder stringBuilder = new StringBuilder("{");
 
-            stringBuilder.append("\"").append("success").append("\":\"").append(this.success).append("\",");
+            stringBuilder.append("\"").append("success").append("\":\"").append(success).append("\",");
 
             stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
             stringBuilder.append("}");
@@ -322,7 +322,7 @@ public class HelloServiceCodec {
         public String toString() {
             StringBuilder stringBuilder = new StringBuilder("{");
 
-            stringBuilder.append("\"").append("hello").append("\":").append(this.hello.toString()).append(",");
+            stringBuilder.append("\"").append("hello").append("\":").append(this.hello == null ? "null" : this.hello.toString()).append(",");
 
             if (stringBuilder.lastIndexOf(",") > 0)
                 stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
@@ -352,7 +352,7 @@ public class HelloServiceCodec {
         public String toString() {
             StringBuilder stringBuilder = new StringBuilder("{");
 
-            stringBuilder.append("\"").append("success").append("\":\"").append(this.success).append("\",");
+            stringBuilder.append("\"").append("success").append("\":\"").append(success).append("\",");
 
             stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
             stringBuilder.append("}");
