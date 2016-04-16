@@ -1,6 +1,5 @@
 package com.isuwang.soa.hello.client;
 
-import com.isuwang.soa.core.SoaException;
 import com.isuwang.soa.hello.HelloServiceClient;
 import com.isuwang.soa.hello.domain.Hello;
 
@@ -13,7 +12,7 @@ public class TestClient {
 
     public static void main(String[] args) throws InterruptedException {
         while (true) {
-            final int count = 100;
+            final int count = 10;
 
             final CountDownLatch latch = new CountDownLatch(count);
 
@@ -36,8 +35,10 @@ public class TestClient {
 
                         //System.out.println(client.sayHello("hello"));
 
+                        Thread.sleep(100);
+
                         latch.countDown();
-                    } catch (SoaException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
