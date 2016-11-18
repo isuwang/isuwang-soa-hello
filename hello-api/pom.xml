@@ -15,8 +15,8 @@
 
         <dependency>
             <groupId>com.isuwang</groupId>
-            <artifactId>isuwang-soa-remoting-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>dapeng-remoting-api</artifactId>
+            <version>1.1.0</version>
         </dependency>
 
     </dependencies>

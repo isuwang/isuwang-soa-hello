@@ -1,6 +1,6 @@
 package com.isuwang.soa.hello;
 
-import com.isuwang.soa.core.SoaException;
+import com.isuwang.dapeng.core.SoaException;
 import com.isuwang.soa.hello.domain.Hello;
 import com.isuwang.soa.hello.service.HelloService;
 

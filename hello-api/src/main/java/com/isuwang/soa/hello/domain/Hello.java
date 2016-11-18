@@ -10,7 +10,7 @@ public class Hello {
     /**
      *
      **/
-    private String name;
+    public String name;
 
     public String getName() {
         return this.name;
@@ -24,7 +24,7 @@ public class Hello {
     /**
      *
      **/
-    private Optional<String> message = Optional.empty();
+    public Optional<String> message = Optional.empty();
 
     public Optional<String> getMessage() {
         return this.message;

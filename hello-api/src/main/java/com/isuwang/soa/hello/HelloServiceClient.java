@@ -1,9 +1,9 @@
 package com.isuwang.soa.hello;
 
-import com.isuwang.soa.core.SoaException;
+import com.isuwang.dapeng.core.SoaException;
+import com.isuwang.dapeng.remoting.BaseServiceClient;
+import com.isuwang.org.apache.thrift.TException;
 import com.isuwang.soa.hello.HelloServiceCodec.*;
-import com.isuwang.soa.remoting.BaseServiceClient;
-import org.apache.thrift.TException;
 
 public class HelloServiceClient extends BaseServiceClient {
 
@@ -20,6 +20,7 @@ public class HelloServiceClient extends BaseServiceClient {
     /**
      * say hello
      **/
+
     public String sayHello(String name) throws SoaException {
         initContext("sayHello");
 
@@ -43,9 +44,11 @@ public class HelloServiceClient extends BaseServiceClient {
         }
     }
 
+
     /**
      *
      **/
+
     public String sayHello2(com.isuwang.soa.hello.domain.Hello hello) throws SoaException {
         initContext("sayHello2");
 
