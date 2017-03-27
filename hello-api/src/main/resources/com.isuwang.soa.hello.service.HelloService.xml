@@ -67,12 +67,12 @@
     <structs>
         <struct namespace="com.isuwang.soa.hello.domain" name="Hello">
             <fields>
-                <field tag="1" name="name" optional="false" privacy="true">
+                <field tag="1" name="name" optional="false" privacy="false">
                     <dataType>
                         <kind>STRING</kind>
                     </dataType>
                 </field>
-                <field tag="2" name="message" optional="true" privacy="true">
+                <field tag="2" name="message" optional="true" privacy="false">
                     <dataType>
                         <kind>STRING</kind>
                     </dataType>
