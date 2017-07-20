@@ -1,4 +1,3 @@
-
 package com.isuwang.soa.hello.service;
 
 import com.isuwang.dapeng.core.Processor;
@@ -16,19 +15,11 @@ import com.isuwang.dapeng.core.Service;
 public interface HelloService {
 
     /**
-     * say hello
-     **/
-
-
-    String sayHello(String name) throws com.isuwang.dapeng.core.SoaException;
-
-
-    /**
      *
      **/
 
 
-    String sayHello2(com.isuwang.soa.hello.domain.Hello hello) throws com.isuwang.dapeng.core.SoaException;
+    String sayHello(com.isuwang.soa.hello.domain.Hello hello) throws com.isuwang.dapeng.core.SoaException;
 
 
 }

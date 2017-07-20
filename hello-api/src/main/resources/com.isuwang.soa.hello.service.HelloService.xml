@@ -10,37 +10,7 @@
     </meta>
     <methods>
         <method name="sayHello">
-            <doc>
-
- say hello
-</doc>
             <request name="sayHello_args">
-                <fields>
-                    <field tag="1" name="name" optional="false" privacy="false">
-                        <dataType>
-                            <kind>STRING</kind>
-                        </dataType>
-                        <doc></doc>
-                    </field>
-                </fields>
-            </request>
-            <response name="sayHello_result">
-                <fields>
-                    <field tag="0" name="success" optional="false" privacy="false">
-                        <dataType>
-                            <kind>STRING</kind>
-                        </dataType>
-                        <doc>
-
- say hello
-</doc>
-                    </field>
-                </fields>
-            </response>
-            <isSoaTransactionProcess>false</isSoaTransactionProcess>
-        </method>
-        <method name="sayHello2">
-            <request name="sayHello2_args">
                 <fields>
                     <field tag="1" name="hello" optional="false" privacy="false">
                         <dataType>
@@ -51,7 +21,7 @@
                     </field>
                 </fields>
             </request>
-            <response name="sayHello2_result">
+            <response name="sayHello_result">
                 <fields>
                     <field tag="0" name="success" optional="false" privacy="false">
                         <dataType>
@@ -77,8 +47,31 @@
                         <kind>STRING</kind>
                     </dataType>
                 </field>
+                <field tag="3" name="type" optional="false" privacy="false">
+                    <dataType>
+                        <kind>ENUM</kind>
+                        <ref>com.isuwang.soa.hello.enums.HelloEnum</ref>
+                    </dataType>
+                </field>
             </fields>
         </struct>
     </structs>
-    <enums/>
+    <enums>
+        <tenum namespace="com.isuwang.soa.hello.enums" name="HelloEnum">
+            <items>
+                <item>
+                    <label>HELLOENUM1</label>
+                    <value>1</value>
+                </item>
+                <item>
+                    <label>HELLOENUM2</label>
+                    <value>2</value>
+                </item>
+                <item>
+                    <label>HELLOENUM3</label>
+                    <value>3</value>
+                </item>
+            </items>
+        </tenum>
+    </enums>
 </service>

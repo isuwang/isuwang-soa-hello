@@ -7,11 +7,6 @@ namespace java com.isuwang.soa.hello.service
 **/
 service HelloService {
 
-    /**
-    * say hello
-    **/
-    string sayHello(1:string name),
-
-    string sayHello2(1:hello_domain.Hello hello)
+    string sayHello(1:hello_domain.Hello hello)
 
 }

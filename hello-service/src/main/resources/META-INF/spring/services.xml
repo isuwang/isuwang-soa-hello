@@ -7,7 +7,10 @@
         http://soa-springtag.isuwang.com/schema/service
         http://soa-springtag.isuwang.com/schema/service/service.xsd">
 
-    <bean id="helloService" class="com.isuwang.soa.hello.HelloServiceImpl"/>
-    <soa:service ref="helloService"/>
+    <!--<bean id="helloService" class="com.isuwang.soa.hello.HelloServiceImpl" init-method="init"/>-->
+    <!--<soa:service ref="helloService"/>-->
+
+    <bean id="orderService" class="com.isuwang.dapeng.demo.order.OrderServiceImpl"/>
+    <soa:service ref="orderService"/>
 
 </beans>

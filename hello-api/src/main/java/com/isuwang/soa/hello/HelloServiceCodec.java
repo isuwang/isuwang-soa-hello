@@ -50,6 +50,15 @@ public class HelloServiceCodec {
                         }
                         break;
 
+                    case 3:
+                        if (schemeField.type == com.isuwang.org.apache.thrift.protocol.TType.I32) {
+                            com.isuwang.soa.hello.enums.HelloEnum elem0 = com.isuwang.soa.hello.enums.HelloEnum.findByValue(iprot.readI32());
+                            bean.setType(elem0);
+                        } else {
+                            com.isuwang.org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+                        }
+                        break;
+
 
                     default:
                         com.isuwang.org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
@@ -81,6 +90,12 @@ public class HelloServiceCodec {
 
             }
 
+            oprot.writeFieldBegin(new com.isuwang.org.apache.thrift.protocol.TField("type", com.isuwang.org.apache.thrift.protocol.TType.I32, (short) 3));
+            com.isuwang.soa.hello.enums.HelloEnum elem2 = bean.getType();
+            oprot.writeI32(elem2.getValue());
+
+            oprot.writeFieldEnd();
+
             oprot.writeFieldStop();
             oprot.writeStructEnd();
         }
@@ -89,6 +104,9 @@ public class HelloServiceCodec {
 
             if (bean.getName() == null)
                 throw new SoaException(SoaBaseCode.NotNull, "name字段不允许为空");
+
+            if (bean.getType() == null)
+                throw new SoaException(SoaBaseCode.NotNull, "type字段不允许为空");
 
         }
 
@@ -101,14 +119,14 @@ public class HelloServiceCodec {
 
     public static class sayHello_args {
 
-        private String name;
+        private com.isuwang.soa.hello.domain.Hello hello;
 
-        public String getName() {
-            return this.name;
+        public com.isuwang.soa.hello.domain.Hello getHello() {
+            return this.hello;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setHello(com.isuwang.soa.hello.domain.Hello hello) {
+            this.hello = hello;
         }
 
 
@@ -116,7 +134,7 @@ public class HelloServiceCodec {
         public String toString() {
             StringBuilder stringBuilder = new StringBuilder("{");
 
-            stringBuilder.append("\"").append("name").append("\":\"").append(name).append("\",");
+            stringBuilder.append("\"").append("hello").append("\":").append(this.hello == null ? "null" : this.hello.toString()).append(",");
 
             if (stringBuilder.lastIndexOf(",") > 0)
                 stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
@@ -174,9 +192,10 @@ public class HelloServiceCodec {
                 switch (schemeField.id) {
 
                     case 1:
-                        if (schemeField.type == com.isuwang.org.apache.thrift.protocol.TType.STRING) {
-                            String elem0 = iprot.readString();
-                            bean.setName(elem0);
+                        if (schemeField.type == com.isuwang.org.apache.thrift.protocol.TType.STRUCT) {
+                            com.isuwang.soa.hello.domain.Hello elem0 = new com.isuwang.soa.hello.domain.Hello();
+                            new HelloSerializer().read(elem0, iprot);
+                            bean.setHello(elem0);
                         } else {
                             com.isuwang.org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
                         }
@@ -201,9 +220,9 @@ public class HelloServiceCodec {
             oprot.writeStructBegin(new com.isuwang.org.apache.thrift.protocol.TStruct("sayHello_args"));
 
 
-            oprot.writeFieldBegin(new com.isuwang.org.apache.thrift.protocol.TField("name", com.isuwang.org.apache.thrift.protocol.TType.STRING, (short) 1));
-            String elem0 = bean.getName();
-            oprot.writeString(elem0);
+            oprot.writeFieldBegin(new com.isuwang.org.apache.thrift.protocol.TField("hello", com.isuwang.org.apache.thrift.protocol.TType.STRUCT, (short) 1));
+            com.isuwang.soa.hello.domain.Hello elem0 = bean.getHello();
+            new HelloSerializer().write(elem0, oprot);
 
             oprot.writeFieldEnd();
 
@@ -213,8 +232,11 @@ public class HelloServiceCodec {
 
         public void validate(sayHello_args bean) throws TException {
 
-            if (bean.getName() == null)
-                throw new SoaException(SoaBaseCode.NotNull, "name字段不允许为空");
+            if (bean.getHello() == null)
+                throw new SoaException(SoaBaseCode.NotNull, "hello字段不允许为空");
+
+            if (bean.getHello() != null)
+                new HelloSerializer().validate(bean.getHello());
 
         }
 
@@ -305,7 +327,7 @@ public class HelloServiceCodec {
         public sayHello_result getResult(I iface, sayHello_args args) throws TException {
             sayHello_result result = new sayHello_result();
 
-            result.success = iface.sayHello(args.name);
+            result.success = iface.sayHello(args.hello);
 
             return result;
         }
@@ -314,233 +336,6 @@ public class HelloServiceCodec {
         @Override
         public sayHello_args getEmptyArgsInstance() {
             return new sayHello_args();
-        }
-
-        @Override
-        protected boolean isOneway() {
-            return false;
-        }
-    }
-
-    public static class sayHello2_args {
-
-        private com.isuwang.soa.hello.domain.Hello hello;
-
-        public com.isuwang.soa.hello.domain.Hello getHello() {
-            return this.hello;
-        }
-
-        public void setHello(com.isuwang.soa.hello.domain.Hello hello) {
-            this.hello = hello;
-        }
-
-
-        @Override
-        public String toString() {
-            StringBuilder stringBuilder = new StringBuilder("{");
-
-            stringBuilder.append("\"").append("hello").append("\":").append(this.hello == null ? "null" : this.hello.toString()).append(",");
-
-            if (stringBuilder.lastIndexOf(",") > 0)
-                stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
-            stringBuilder.append("}");
-
-            return stringBuilder.toString();
-        }
-
-    }
-
-
-    public static class sayHello2_result {
-
-
-        private String success;
-
-        public String getSuccess() {
-            return success;
-        }
-
-        public void setSuccess(String success) {
-            this.success = success;
-        }
-
-
-        @Override
-        public String toString() {
-            StringBuilder stringBuilder = new StringBuilder("{");
-
-            stringBuilder.append("\"").append("success").append("\":\"").append(success).append("\",");
-
-            stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
-            stringBuilder.append("}");
-
-            return stringBuilder.toString();
-        }
-
-
-    }
-
-    public static class SayHello2_argsSerializer implements TBeanSerializer<sayHello2_args> {
-
-        @Override
-        public void read(sayHello2_args bean, TProtocol iprot) throws TException {
-
-            com.isuwang.org.apache.thrift.protocol.TField schemeField;
-            iprot.readStructBegin();
-
-            while (true) {
-                schemeField = iprot.readFieldBegin();
-                if (schemeField.type == com.isuwang.org.apache.thrift.protocol.TType.STOP) {
-                    break;
-                }
-
-                switch (schemeField.id) {
-
-                    case 1:
-                        if (schemeField.type == com.isuwang.org.apache.thrift.protocol.TType.STRUCT) {
-                            com.isuwang.soa.hello.domain.Hello elem0 = new com.isuwang.soa.hello.domain.Hello();
-                            new HelloSerializer().read(elem0, iprot);
-                            bean.setHello(elem0);
-                        } else {
-                            com.isuwang.org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-                        }
-                        break;
-
-
-                    default:
-                        com.isuwang.org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-
-                }
-                iprot.readFieldEnd();
-            }
-            iprot.readStructEnd();
-
-            validate(bean);
-        }
-
-        @Override
-        public void write(sayHello2_args bean, TProtocol oprot) throws TException {
-
-            validate(bean);
-            oprot.writeStructBegin(new com.isuwang.org.apache.thrift.protocol.TStruct("sayHello2_args"));
-
-
-            oprot.writeFieldBegin(new com.isuwang.org.apache.thrift.protocol.TField("hello", com.isuwang.org.apache.thrift.protocol.TType.STRUCT, (short) 1));
-            com.isuwang.soa.hello.domain.Hello elem0 = bean.getHello();
-            new HelloSerializer().write(elem0, oprot);
-
-            oprot.writeFieldEnd();
-
-            oprot.writeFieldStop();
-            oprot.writeStructEnd();
-        }
-
-        public void validate(sayHello2_args bean) throws TException {
-
-            if (bean.getHello() == null)
-                throw new SoaException(SoaBaseCode.NotNull, "hello字段不允许为空");
-
-            if (bean.getHello() != null)
-                new HelloSerializer().validate(bean.getHello());
-
-        }
-
-
-        @Override
-        public String toString(sayHello2_args bean) {
-            return bean == null ? "null" : bean.toString();
-        }
-
-    }
-
-    public static class SayHello2_resultSerializer implements TBeanSerializer<sayHello2_result> {
-        @Override
-        public void read(sayHello2_result bean, TProtocol iprot) throws TException {
-
-            com.isuwang.org.apache.thrift.protocol.TField schemeField;
-            iprot.readStructBegin();
-
-            while (true) {
-                schemeField = iprot.readFieldBegin();
-                if (schemeField.type == com.isuwang.org.apache.thrift.protocol.TType.STOP) {
-                    break;
-                }
-
-                switch (schemeField.id) {
-                    case 0:  //SUCCESS
-                        if (schemeField.type == com.isuwang.org.apache.thrift.protocol.TType.STRING) {
-                            String elem0 = iprot.readString();
-                            bean.setSuccess(elem0);
-                        } else {
-                            com.isuwang.org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-                        }
-                        break;
-                  /*
-                  case 1: //ERROR
-                  bean.setSoaException(new SoaException());
-                  new SoaExceptionSerializer().read(bean.getSoaException(), iprot);
-                  break A;
-                  */
-                    default:
-                        com.isuwang.org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-                }
-                iprot.readFieldEnd();
-            }
-            iprot.readStructEnd();
-
-            validate(bean);
-        }
-
-        @Override
-        public void write(sayHello2_result bean, TProtocol oprot) throws TException {
-
-            validate(bean);
-            oprot.writeStructBegin(new com.isuwang.org.apache.thrift.protocol.TStruct("sayHello2_result"));
-
-
-            oprot.writeFieldBegin(new com.isuwang.org.apache.thrift.protocol.TField("success", com.isuwang.org.apache.thrift.protocol.TType.STRING, (short) 0));
-            String elem0 = bean.getSuccess();
-            oprot.writeString(elem0);
-
-            oprot.writeFieldEnd();
-
-            oprot.writeFieldStop();
-            oprot.writeStructEnd();
-        }
-
-
-        public void validate(sayHello2_result bean) throws TException {
-
-            if (bean.getSuccess() == null)
-                throw new SoaException(SoaBaseCode.NotNull, "success字段不允许为空");
-
-        }
-
-
-        @Override
-        public String toString(sayHello2_result bean) {
-            return bean == null ? "null" : bean.toString();
-        }
-    }
-
-    public static class sayHello2<I extends com.isuwang.soa.hello.service.HelloService> extends SoaProcessFunction<I, sayHello2_args, sayHello2_result, SayHello2_argsSerializer, SayHello2_resultSerializer> {
-        public sayHello2() {
-            super("sayHello2", new SayHello2_argsSerializer(), new SayHello2_resultSerializer());
-        }
-
-        @Override
-        public sayHello2_result getResult(I iface, sayHello2_args args) throws TException {
-            sayHello2_result result = new sayHello2_result();
-
-            result.success = iface.sayHello2(args.hello);
-
-            return result;
-        }
-
-
-        @Override
-        public sayHello2_args getEmptyArgsInstance() {
-            return new sayHello2_args();
         }
 
         @Override
@@ -738,8 +533,6 @@ public class HelloServiceCodec {
         private static <I extends com.isuwang.soa.hello.service.HelloService> java.util.Map<String, SoaProcessFunction<I, ?, ?, ? extends TBeanSerializer<?>, ? extends TBeanSerializer<?>>> getProcessMap(java.util.Map<String, SoaProcessFunction<I, ?, ?, ? extends TBeanSerializer<?>, ? extends TBeanSerializer<?>>> processMap) {
 
             processMap.put("sayHello", new sayHello());
-
-            processMap.put("sayHello2", new sayHello2());
 
             processMap.put("getServiceMetadata", new getServiceMetadata());
 

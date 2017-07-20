@@ -25,46 +25,18 @@ public class HelloServiceClient extends BaseServiceClient {
 
 
     /**
-     * say hello
+     *
      **/
 
-    public String sayHello(String name) throws SoaException {
+    public String sayHello(com.isuwang.soa.hello.domain.Hello hello) throws SoaException {
         initContext("sayHello");
 
         try {
             sayHello_args sayHello_args = new sayHello_args();
-            sayHello_args.setName(name);
+            sayHello_args.setHello(hello);
 
 
             sayHello_result response = sendBase(sayHello_args, new sayHello_result(), new SayHello_argsSerializer(), new SayHello_resultSerializer());
-
-
-            return response.getSuccess();
-
-
-        } catch (SoaException e) {
-            throw e;
-        } catch (TException e) {
-            throw new SoaException(e);
-        } finally {
-            destoryContext();
-        }
-    }
-
-
-    /**
-     *
-     **/
-
-    public String sayHello2(com.isuwang.soa.hello.domain.Hello hello) throws SoaException {
-        initContext("sayHello2");
-
-        try {
-            sayHello2_args sayHello2_args = new sayHello2_args();
-            sayHello2_args.setHello(hello);
-
-
-            sayHello2_result response = sendBase(sayHello2_args, new sayHello2_result(), new SayHello2_argsSerializer(), new SayHello2_resultSerializer());
 
 
             return response.getSuccess();

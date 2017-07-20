@@ -55,11 +55,34 @@ public class Hello {
         return this;
     }
 
+    /**
+     *
+     **/
+    public com.isuwang.soa.hello.enums.HelloEnum type;
+
+    public com.isuwang.soa.hello.enums.HelloEnum getType() {
+        return this.type;
+    }
+
+    public void setType(com.isuwang.soa.hello.enums.HelloEnum type) {
+        this.type = type;
+    }
+
+    public com.isuwang.soa.hello.enums.HelloEnum type() {
+        return this.type;
+    }
+
+    public Hello type(com.isuwang.soa.hello.enums.HelloEnum type) {
+        this.type = type;
+        return this;
+    }
+
 
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder("{");
         stringBuilder.append("\"").append("name").append("\":\"").append(this.name).append("\",");
         stringBuilder.append("\"").append("message").append("\":\"").append(this.message.isPresent() ? this.message.get() : null).append("\",");
+        stringBuilder.append("\"").append("type").append("\":").append(this.type).append(",");
 
         stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
         stringBuilder.append("}");
