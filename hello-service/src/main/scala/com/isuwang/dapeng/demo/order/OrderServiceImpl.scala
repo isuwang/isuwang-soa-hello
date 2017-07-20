@@ -17,7 +17,10 @@ class OrderServiceImpl extends OrderService {
     */
   override def findOrder(request: FindOrderRequest): scala.List[Order] = {
 
+    println(request)
+
     val order = Order(1, "testOrder", PayTypeEnum.AliPay, 100, 101, BigDecimal(100), Option("test"))
+
     List(order)
   }
 }

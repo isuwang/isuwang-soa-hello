@@ -9,7 +9,7 @@ import com.isuwang.org.apache.thrift.TException
 /**
   * Created by ever on 2017/7/19.
   */
-class OrderServiceClient extends BaseScalaServiceClient("com.isuwang.dapeng.demo.OrderService", "1.0.0") {
+class OrderServiceClient extends BaseScalaServiceClient("com.isuwang.dapeng.demo.service.OrderService", "1.0.0") {
   override def isSoaTransactionalProcess: Boolean = false
 
   def findOrder(request: FindOrderRequest): List[Order] = {

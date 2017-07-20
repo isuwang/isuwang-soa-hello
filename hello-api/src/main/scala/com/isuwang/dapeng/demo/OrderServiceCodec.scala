@@ -62,7 +62,7 @@ object OrderServiceCodec {
             }
           case 6 =>
             schemeField.`type` match {
-              case com.isuwang.org.apache.thrift.protocol.TType.DOUBLE => price = BigDecimal(iproto.readString)
+              case com.isuwang.org.apache.thrift.protocol.TType.STRING => price = BigDecimal(iproto.readString)
               case _ => com.isuwang.org.apache.thrift.protocol.TProtocolUtil.skip(iproto, schemeField.`type`)
             }
           case 7 =>
@@ -163,7 +163,7 @@ object OrderServiceCodec {
             }
           case 2 =>
             schemeField.`type` match {
-              case com.isuwang.org.apache.thrift.protocol.TType.STRING => buyerId = iproto.readI32
+              case com.isuwang.org.apache.thrift.protocol.TType.I32 => buyerId = iproto.readI32
               case _ => com.isuwang.org.apache.thrift.protocol.TProtocolUtil.skip(iproto, schemeField.`type`)
             }
           case _ => com.isuwang.org.apache.thrift.protocol.TProtocolUtil.skip(iproto, schemeField.`type`)
@@ -308,7 +308,7 @@ object OrderServiceCodec {
       validate(bean)
       oproto.writeStructBegin(new com.isuwang.org.apache.thrift.protocol.TStruct("findOrder_result"))
 
-      oproto.writeFieldBegin(new com.isuwang.org.apache.thrift.protocol.TField("success", com.isuwang.org.apache.thrift.protocol.TType.STRUCT, 0.asInstanceOf[Short]))
+      oproto.writeFieldBegin(new com.isuwang.org.apache.thrift.protocol.TField("success", com.isuwang.org.apache.thrift.protocol.TType.LIST, 0.asInstanceOf[Short]))
 
       val elem0 = bean.success
 
