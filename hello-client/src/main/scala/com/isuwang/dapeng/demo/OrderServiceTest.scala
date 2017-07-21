@@ -21,8 +21,7 @@ object OrderServiceTest {
     * @return
     */
   def findOrderTest(): List[Order] = {
-    val request = FindOrderRequest(payType = PayTypeEnum.AliPay, buyerId = 1)
-    new OrderServiceClient().findOrder(request)
+    OrderServiceClient.findOrder(FindOrderRequest(payType = PayTypeEnum.AliPay, buyerId = 1))
   }
 
   def main(args: Array[String]): Unit = {
@@ -38,6 +37,7 @@ object OrderServiceTest {
     val result = findOrderTest()
 
     result.foreach(order => println(order))
+
   }
 
 }

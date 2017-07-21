@@ -23,4 +23,7 @@ class OrderServiceImpl extends OrderService {
 
     List(order)
   }
+
+  // override def findOrder: Future[List[Order]]
+
 }
