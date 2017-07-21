@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service namespace="com.isuwang.dapeng.demo.service" name="OrderService">
+    <doc>
+
+ 订单服务
+</doc>
+    <meta>
+        <version>1.0.0</version>
+        <timeout>30000</timeout>
+    </meta>
+    <methods>
+        <method name="findOrder">
+            <doc>
+
+### 查找订单
+#### 业务描述
+      查找订单
+
+#### 接口依赖
+      无
+
+#### 边界异常说明
+     1. 无
+
+#### 输入
+     1. order_domain.FindOrderRequest
+
+#### 前置检查
+
+#### 权限检查
+
+#### 逻辑处理
+
+
+#### 数据库变更
+     无
+
+#### 事务处理
+
+#### 输出
+        list&lt;order_domain.Order&gt;
+</doc>
+            <request name="findOrder_args">
+                <fields>
+                    <field tag="1" name="request" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>com.isuwang.dapeng.demo.domain.FindOrderRequest</ref>
+                        </dataType>
+                        <doc></doc>
+                    </field>
+                </fields>
+            </request>
+            <response name="findOrder_result">
+                <fields>
+                    <field tag="0" name="success" optional="false" privacy="false">
+                        <dataType>
+                            <kind>LIST</kind>
+                            <valueType>
+<kind>STRUCT</kind>
+<ref>com.isuwang.dapeng.demo.domain.Order</ref>
+                            </valueType>
+                        </dataType>
+                        <doc>
+
+### 查找订单
+#### 业务描述
+      查找订单
+
+#### 接口依赖
+      无
+
+#### 边界异常说明
+     1. 无
+
+#### 输入
+     1. order_domain.FindOrderRequest
+
+#### 前置检查
+
+#### 权限检查
+
+#### 逻辑处理
+
+
+#### 数据库变更
+     无
+
+#### 事务处理
+
+#### 输出
+        list&lt;order_domain.Order&gt;
+</doc>
+                    </field>
+                </fields>
+            </response>
+            <isSoaTransactionProcess>false</isSoaTransactionProcess>
+        </method>
+    </methods>
+    <structs>
+        <struct namespace="com.isuwang.dapeng.demo.domain" name="Order">
+            <doc>
+
+ 订单信息
+</doc>
+            <fields>
+                <field tag="1" name="id" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>订单id</doc>
+                </field>
+                <field tag="2" name="orderNo" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                    <doc>订单号</doc>
+                </field>
+                <field tag="3" name="payType" optional="false" privacy="false">
+                    <dataType>
+                        <kind>ENUM</kind>
+                        <ref>com.isuwang.dapeng.demo.enums.PayTypeEnum</ref>
+                    </dataType>
+                    <doc>支付方式</doc>
+                </field>
+                <field tag="4" name="buyerId" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>买家id</doc>
+                </field>
+                <field tag="5" name="sellerId" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>卖家id</doc>
+                </field>
+                <field tag="6" name="price" optional="false" privacy="false">
+                    <dataType>
+                        <kind>BIGDECIMAL</kind>
+                    </dataType>
+                    <doc>成交价格*
+  @datatype(name="bigdecimal")
+</doc>
+                </field>
+                <field tag="7" name="remark" optional="true" privacy="false">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                    <doc>备注信息</doc>
+                </field>
+            </fields>
+        </struct>
+        <struct namespace="com.isuwang.dapeng.demo.domain" name="FindOrderRequest">
+            <doc>
+
+ 查找订单请求
+</doc>
+            <fields>
+                <field tag="1" name="payType" optional="false" privacy="false">
+                    <dataType>
+                        <kind>ENUM</kind>
+                        <ref>com.isuwang.dapeng.demo.enums.PayTypeEnum</ref>
+                    </dataType>
+                    <doc>支付方式</doc>
+                </field>
+                <field tag="2" name="buyerId" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>买家id</doc>
+                </field>
+            </fields>
+        </struct>
+    </structs>
+    <enums>
+        <tenum namespace="com.isuwang.dapeng.demo.enums" name="PayTypeEnum">
+            <doc>
+
+ 订单支付方式
+</doc>
+            <items>
+                <item>
+                    <label>WeChat</label>
+                    <value>1</value>
+                    <doc>
+
+ 微信
+</doc>
+                </item>
+                <item>
+                    <label>AliPay</label>
+                    <value>2</value>
+                    <doc>
+
+ 支付宝
+</doc>
+                </item>
+                <item>
+                    <label>Bank</label>
+                    <value>3</value>
+                    <doc>
+
+ 银行转账
+</doc>
+                </item>
+            </items>
+        </tenum>
+    </enums>
+</service>

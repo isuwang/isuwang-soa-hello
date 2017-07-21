@@ -1,7 +1,7 @@
 package com.isuwang.dapeng.demo
 
 import com.isuwang.dapeng.core.SoaException
-import com.isuwang.dapeng.demo.OrderServiceCodec.{FindOrder_argsSerializer, FindOrder_resultSerializer, findOrder_args}
+import com.isuwang.dapeng.demo.OrderServiceCodec._
 import com.isuwang.dapeng.demo.domain.{FindOrderRequest, Order}
 import com.isuwang.dapeng.remoting.BaseScalaServiceClient
 import com.isuwang.org.apache.thrift.TException
@@ -27,4 +27,23 @@ class OrderServiceClient extends BaseScalaServiceClient("com.isuwang.dapeng.demo
       destoryContext()
     }
   }
+
+//  @throws[SoaException]
+//  def getServiceMetadata: String = {
+//
+//    initContext("getServiceMetadata")
+//
+//    try {
+//      val _request = getServiceMetadata_args
+//      val _response = sendBase(_request, new GetServiceMetadata_argsSerializer(), new GetServiceMetadata_resultSerializer())
+//      _response.success
+//    } catch {
+//      case e: SoaException => throw e
+//      case e: TException => throw new SoaException(e)
+//    }
+//    finally {
+//      destoryContext()
+//    }
+//  }
+
 }

@@ -15,8 +15,8 @@ public class HelloServiceImpl implements HelloService {
 
         new Thread(() -> {
 
-            while (true){
-            System.out.println(MasterHelper.isMaster("com.isuwang.soa.hello.service.HelloService", "1.0.0"));
+            while (true) {
+                System.out.println(MasterHelper.isMaster("com.isuwang.soa.hello.service.HelloService", "1.0.0"));
 
                 try {
                     Thread.sleep(3000);
@@ -24,8 +24,6 @@ public class HelloServiceImpl implements HelloService {
                     e.printStackTrace();
                 }
             }
-
-
         }).start();
 
     }
