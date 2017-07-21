@@ -5,6 +5,7 @@ import com.isuwang.dapeng.demo.OrderServiceCodec._
 import com.isuwang.dapeng.demo.domain.{FindOrderRequest, Order}
 import com.isuwang.dapeng.remoting.BaseScalaServiceClient
 import com.isuwang.org.apache.thrift.TException
+import com.sun.xml.internal.ws.util.CompletedFuture
 
 /**
   * Created by ever on 2017/7/19.
@@ -29,21 +30,6 @@ object OrderServiceClient extends BaseScalaServiceClient("com.isuwang.dapeng.dem
     }
   }
 
-  //  def findOrderAsync(request: FindOrderRequest): Future[List[Order]] = {
-  //    initContext("findOrder")
-  //
-  //    try {
-  //      val _request = findOrder_args(request)
-  //      val _response = sendBaseAsync(_request, new FindOrder_argsSerializer(), new FindOrder_resultSerializer())
-  //      _response.success
-  //    } catch {
-  //      case e: SoaException => throw e
-  //      case e: TException => throw new SoaException(e)
-  //    }
-  //    finally {
-  //      destoryContext()
-  //    }
-  //  }
 
   @throws[SoaException]
   def getServiceMetadata: String = {
